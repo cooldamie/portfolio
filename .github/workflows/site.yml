@@ -64,7 +64,6 @@ jobs:
           action: upload
           app_location: dist
           skip_app_build: true
-          skip_api_build: true
 
   verify:
     name: E2E, accessibility and Lighthouse
