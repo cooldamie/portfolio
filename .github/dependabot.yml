@@ -1,0 +1,40 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      astro:
+        patterns: ['astro', '@astrojs/*']
+      fonts:
+        patterns: ['@fontsource*']
+      tooling:
+        patterns:
+          - 'eslint*'
+          - '@eslint/*'
+          - 'typescript*'
+          - 'prettier*'
+          - 'globals'
+          - 'vitest'
+          - '@vitest/*'
+          - '@playwright/*'
+          - '@axe-core/*'
+          - '@lhci/*'
+          - 'size-limit'
+          - '@size-limit/*'
+    ignore:
+      # typescript-eslint and @astrojs/check don't support TypeScript 7 yet.
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      actions:
+        patterns: ['*']

@@ -1,0 +1,99 @@
+/*
+  Blueprint design tokens.
+  Light values live on :root. Dark mode redefines colour tokens only:
+  by system preference unless the visitor picked light, and always when they picked dark.
+*/
+:root {
+  /* colour */
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --surface-2: #eaeef4;
+  --ink: #0c1424;
+  --muted: #556178;
+  --line: #d6dde8;
+  --accent: #2148c9;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3e9fb;
+  --signal: #9a5b00;
+  --ok: #1e7a4c;
+  --danger: #b42318;
+  --grid: #e2e7ef;
+
+  /* type */
+  --f-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --f-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --display-stretch: 118%;
+  --display-weight: 700;
+  --display-tracking: -0.022em;
+
+  /* fluid type scale: ratio about 1.2 on phones rising to 1.333 on desktop */
+  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.45vw, 1.42rem);
+  --step-2: clamp(1.44rem, 1.27rem + 0.85vw, 1.89rem);
+  --step-3: clamp(1.73rem, 1.45rem + 1.4vw, 2.52rem);
+  --step-4: clamp(2.07rem, 1.62rem + 2.25vw, 3.36rem);
+  --step-5: clamp(2.49rem, 1.78rem + 3.5vw, 4.47rem);
+
+  /* space (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* shape, motion, layout */
+  --r-s: 6px;
+  --r-m: 10px;
+  --r-pill: 999px;
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --measure: 68ch;
+  --wide: 1200px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0a0f19;
+    --surface: #101827;
+    --surface-2: #172135;
+    --ink: #e6ebf3;
+    --muted: #94a1b7;
+    --line: #24324b;
+    --accent: #86a2ff;
+    --accent-ink: #0a0f19;
+    --accent-soft: #18244a;
+    --signal: #f0b04a;
+    --ok: #4cc38a;
+    --danger: #f97066;
+    --grid: #121b2b;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0a0f19;
+  --surface: #101827;
+  --surface-2: #172135;
+  --ink: #e6ebf3;
+  --muted: #94a1b7;
+  --line: #24324b;
+  --accent: #86a2ff;
+  --accent-ink: #0a0f19;
+  --accent-soft: #18244a;
+  --signal: #f0b04a;
+  --ok: #4cc38a;
+  --danger: #f97066;
+  --grid: #121b2b;
+  color-scheme: dark;
+}

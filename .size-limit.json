@@ -1,0 +1,24 @@
+[
+  {
+    "name": "JavaScript, all pages",
+    "path": "dist/**/*.js",
+    "limit": "40 kB",
+    "gzip": true
+  },
+  {
+    "name": "CSS, all pages",
+    "path": "dist/_astro/*.css",
+    "limit": "25 kB",
+    "gzip": true
+  },
+  {
+    "name": "Preloaded fonts",
+    "path": [
+      "dist/_astro/archivo-latin-wdth-normal*.woff2",
+      "dist/_astro/ibm-plex-sans-latin-wght-normal*.woff2"
+    ],
+    "limit": "140 kB",
+    "gzip": false,
+    "brotli": false
+  }
+]

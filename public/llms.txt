@@ -1,0 +1,10 @@
+# Damilola Iranloye (damiecodes)
+
+> Full-stack engineer and IT consultant for banking, risk and operations platforms. Builds systems on .NET, Angular, TypeScript and Azure, and runs delivery through UAT and go-live. Open to consulting engagements and full-time remote roles.
+
+The full site is being built. Case studies, side projects and notes will be listed here as they launch.
+
+## Links
+
+- [Home](https://damiecodes.com/)
+- [LinkedIn](https://www.linkedin.com/in/damilolairanloye/)

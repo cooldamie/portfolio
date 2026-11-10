@@ -1,0 +1,19 @@
+# dependencies and build output
+node_modules/
+dist/
+.astro/
+
+# test and audit output
+playwright-report/
+test-results/
+blob-report/
+.lighthouseci/
+lhci-report/
+coverage/
+
+# local env and OS files
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
