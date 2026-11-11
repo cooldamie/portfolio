@@ -57,6 +57,7 @@ Notes:
 
 - The font budget is 140 kB rather than the plan's 120 kB. Archivo with its width axis is 90 kB on its own, and the width axis is what gives Blueprint its headlines.
 - Lighthouse's `canonical` audit is off because previews live on a different host from the canonical `damiecodes.com` URL by design.
+- Azure serves preview environments with `X-Robots-Tag: none` so they stay out of search results. Pull requests therefore use `lighthouserc.preview.json`, which skips only the crawlability audit and checks every other SEO audit individually; production uses `lighthouserc.json` with the full SEO category. An E2E test asserts that previews are hidden and production is not.
 - Security headers only exist on Azure, so `tests/e2e/headers.spec.ts` is skipped locally.
 
 ## One-time GitHub setup

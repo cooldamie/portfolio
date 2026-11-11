@@ -64,7 +64,6 @@ jobs:
           action: upload
           app_location: dist
           skip_app_build: true
-          skip_api_build: true
 
   verify:
     name: E2E, accessibility and Lighthouse
@@ -72,6 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BASE_URL: ${{ needs.deploy.outputs.url }}
+      PREVIEW: ${{ github.event_name == 'pull_request' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -81,7 +81,9 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps
       - run: npm run test:e2e
-      - run: npx lhci autorun --collect.url="$BASE_URL"
+      # Previews are served with X-Robots-Tag: none, so they use a config that skips only the
+      # crawlability audit and checks the other SEO audits one by one. Production checks all of SEO.
+      - run: npx lhci autorun --config="${{ github.event_name == 'pull_request' && 'lighthouserc.preview.json' || 'lighthouserc.json' }}" --collect.url="$BASE_URL"
       - if: ${{ !cancelled() }}
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:

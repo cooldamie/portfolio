@@ -16,6 +16,17 @@ test('responses carry the security headers', async ({ request }) => {
   expect(headers['referrer-policy']).toBe('strict-origin-when-cross-origin');
 });
 
+// Azure marks preview environments `X-Robots-Tag: none`. Production must never carry it,
+// or the live site would vanish from search results.
+test('only previews are hidden from search engines', async ({ request }) => {
+  const robots = (await request.get('/')).headers()['x-robots-tag'] ?? '';
+  if (process.env.PREVIEW === 'true') {
+    expect(robots).toMatch(/none|noindex/);
+  } else {
+    expect(robots).not.toMatch(/none|noindex/);
+  }
+});
+
 test('hashed assets are cached for a year', async ({ page, request }) => {
   await page.goto('/');
   const stylesheet = await page
